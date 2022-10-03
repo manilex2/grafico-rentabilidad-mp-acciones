@@ -1,0 +1,25 @@
+# serverless.yml
+
+service: graf-rent-acciones-mp
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  stage: rent
+  region: us-east-2
+  environment:
+    DB_HOST: ${env:DB_HOST}
+    DB_USER: ${env:DB_USER}
+    DB_PASSWORD: ${env:DB_PASSWORD}
+    DB_PORT: ${env:DB_PORT}
+    DB_DATABASE: ${env:DB_DATABASE}
+    TABLE_ACCIONES: ${env:TABLE_ACCIONES}
+
+functions:
+  app:
+    handler: index.handler
+    description: LTG20 - Obtiene el gráfico de Rentabilidad a mediano plazo de Acciones desde los datos de AWS RDS.
+    events:
+      - http: GET /
+      - http: 'GET {proxy+}'
