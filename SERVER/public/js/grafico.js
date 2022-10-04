@@ -26,79 +26,35 @@ function totalChart(ctx, extraerdatos){
     var matriz1 = [];
     var matriz2 = [];
     var matriz3 = [];
-    var matriz4 = [];
-    var matriz5 = [];
-    var matriz6 = [];
-    var matriz7 = [];
 
-    const D30 = extraerdatos.map((item) => {
+    const D1 = extraerdatos.map((item) => {
         for (let i = 0; i < item.length; i++) {
             const element = item[i];
-            if (element.d30) {
-                matriz1.push(element.d30);
+            if (element.d1) {
+                matriz1.push(element.d1);
             }
         }
         return matriz1;
     })
     
-    const M3 = extraerdatos.map((item) => {
+    const D2 = extraerdatos.map((item) => {
         for (let i = 0; i < item.length; i++) {
             const element = item[i];
-            if (element.m3) {
-                matriz2.push(element.m3);
+            if (element.d2) {
+                matriz2.push(element.d2);
             }
         }
         return matriz2;
     })
     
-    const M6 = extraerdatos.map((item) => {
+    const D5 = extraerdatos.map((item) => {
         for (let i = 0; i < item.length; i++) {
             const element = item[i];
-            if (element.m6) {
-                matriz3.push(element.m6);
+            if (element.d5) {
+                matriz3.push(element.d5);
             }
         }
         return matriz3;
-    })
-
-    const A1 = extraerdatos.map((item) => {
-        for (let i = 0; i < item.length; i++) {
-            const element = item[i];
-            if (element.a1) {
-                matriz4.push(element.a1);
-            }
-        }
-        return matriz4;
-    })
-    
-    const A3 = extraerdatos.map((item) => {
-        for (let i = 0; i < item.length; i++) {
-            const element = item[i];
-            if (element.a3) {
-                matriz5.push(element.a3);
-            }
-        }
-        return matriz5;
-    })
-    
-    const A5 = extraerdatos.map((item) => {
-        for (let i = 0; i < item.length; i++) {
-            const element = item[i];
-            if (element.a5) {
-                matriz6.push(element.a5);
-            }
-        }
-        return matriz6;
-    })
-
-    const A10 = extraerdatos.map((item) => {
-        for (let i = 0; i < item.length; i++) {
-            const element = item[i];
-            if (element.a10) {
-                matriz7.push(element.a10);
-            }
-        }
-        return matriz7;
     })
 
     var total = []
@@ -107,52 +63,24 @@ function totalChart(ctx, extraerdatos){
     /*global Chart*/
     total.push({
         type: 'bar',
-        label: '30 Días',
-        data: [D30[0][0], D30[0][1], D30[0][2]],
+        label: '24 Horas',
+        data: [D1[0][0], D1[0][1], D1[0][2]],
         backgroundColor: '#9E68E5'
     });  
     
     total.push({
         type: 'bar',
-        label: '3 Meses',
-        data: [M3[0][0], M3[0][1], M3[0][2]],
+        label: '48 Horas',
+        data: [D2[0][0], D2[0][1], D2[0][2]],
         backgroundColor: '#4DA2FD'
     }); 
     
     total.push({
         type: 'bar',
-        label: '6 Meses',
-        data: [M6[0][0], M6[0][1], M6[0][2]],
+        label: '5 Días',
+        data: [D5[0][0], D5[0][1], D5[0][2]],
         backgroundColor: '#26D1C6'
-    });
-
-    total.push({
-        type: 'bar',
-        label: '1 Año',
-        data: [A1[0][0], A1[0][1], A1[0][2]],
-        backgroundColor: 'red'
-    });  
-    
-    total.push({
-        type: 'bar',
-        label: '3 Años',
-        data: [A3[0][0], A3[0][1], A3[0][2]],
-        backgroundColor: 'green'
     }); 
-    
-    total.push({
-        type: 'bar',
-        label: '5 Años',
-        data: [A5[0][0], A5[0][1], A5[0][2]],
-        backgroundColor: 'blue'
-    });
-
-    total.push({
-        type: 'bar',
-        label: '10 Años',
-        data: [A10[0][0], A10[0][1], A10[0][2]],
-        backgroundColor: 'yellow'
-    });  
     
     const chart = new Chart(ctx, {
         data: {
