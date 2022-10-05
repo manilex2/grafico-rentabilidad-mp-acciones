@@ -31,7 +31,7 @@ function totalChart(ctx, extraerdatos){
         for (let i = 0; i < item.length; i++) {
             const element = item[i];
             if (element.d1) {
-                matriz1.push(element.d1);
+                matriz1.push((element.d1*100).toFixed(0));
             }
         }
         return matriz1;
@@ -41,7 +41,7 @@ function totalChart(ctx, extraerdatos){
         for (let i = 0; i < item.length; i++) {
             const element = item[i];
             if (element.d2) {
-                matriz2.push(element.d2);
+                matriz2.push((element.d2*100).toFixed(0));
             }
         }
         return matriz2;
@@ -51,7 +51,7 @@ function totalChart(ctx, extraerdatos){
         for (let i = 0; i < item.length; i++) {
             const element = item[i];
             if (element.d5) {
-                matriz3.push(element.d5);
+                matriz3.push((element.d5*100).toFixed(0));
             }
         }
         return matriz3;
@@ -87,7 +87,7 @@ function totalChart(ctx, extraerdatos){
             datasets: total,
             labels: ['Conservador', 'Optimista', 'Pesimista'],
         },
-        plugins: [plugin],
+        plugins: [plugin, ChartDataLabels],
         options: {
             layout: {
                 padding: {
@@ -137,6 +137,19 @@ function totalChart(ctx, extraerdatos){
                     },
                     color: '#FFF',
                     padding: 30
+                },
+                datalabels: {
+                    color: '#FFF',
+                    anchor: 'end',
+                    align: 'top',
+                    offset: 10,
+                    font: {
+                        weight: 'bold'
+                    },
+                    formatter: function (value, context) {
+                        console.log(context.dataset.data[context.dataIndex]);
+                        return context.dataset.data[context.dataIndex] + '%';
+                    },
                 },
                 /*legend: {
                     position: 'bottom',
